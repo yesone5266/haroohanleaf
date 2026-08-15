@@ -1,0 +1,486 @@
+/* 스타일 초기화 및 기본 공통 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary-dark: #2c4225;
+    --color-primary: #5a7d4a;
+    --color-primary-light: #a8c494;
+    --color-primary-active: #7ba86a;
+    --color-bg-main: #eff2eb;
+    --color-bg-card-inner: #ebf0e4;
+    --color-border: #d6e2c8;
+    --color-danger: #c0725a;
+    --color-white: #ffffff;
+    
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-main);
+    line-height: 1.5;
+    background-color: #e0e5d8; /* 데스크톱 브라우저 배경색 */
+    color: var(--color-primary-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+}
+
+input, textarea, select {
+    font: inherit;
+    outline: none;
+}
+
+/* 모바일 전용 앱 컨테이너 셸 */
+.app-container {
+    width: 384px;
+    height: 743px;
+    background-color: var(--color-bg-main);
+    border-radius: 24px; /* 프리미엄 라운드 모서리 */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+/* 스크롤 가능한 본문 영역 */
+.app-content {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 24px; /* 바텀네비게이션 위 여백 */
+}
+
+/* 공통 헤더 */
+.app-header {
+    height: 60px;
+    padding: 20px 20px 12px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.app-header h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+/* 카드 컴포넌트 */
+.card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 0 16px 12px 16px;
+}
+
+/* 프로필 카드 세부 */
+.profile-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--color-bg-card-inner);
+    overflow: hidden;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.profile-email {
+    font-size: 12px;
+    color: var(--color-primary-light);
+    margin-top: 2px;
+}
+
+.btn-edit {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--color-bg-card-inner);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: var(--color-border);
+}
+
+.profile-bio {
+    margin-top: 16px;
+    background-color: var(--color-bg-card-inner);
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: var(--color-primary-dark);
+    line-height: 20px;
+}
+
+/* 나의 기록 카드 세부 */
+.record-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 12px;
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.stat-card {
+    background-color: var(--color-bg-card-inner);
+    border-radius: 14px;
+    padding: 12px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.stat-label {
+    font-size: 10px;
+    color: var(--color-primary);
+    margin-top: 4px;
+}
+
+/* 마이페이지 목록 버튼 액션 */
+.action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px;
+    margin-bottom: 24px;
+}
+
+.btn-action {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 15px 17px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.btn-action:hover {
+    background-color: var(--color-bg-card-inner);
+}
+
+.btn-action img {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-action span {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.btn-action.logout span {
+    color: var(--color-primary);
+}
+
+.btn-action.delete span {
+    color: var(--color-danger);
+}
+
+/* 공통 바텀 네비게이션 스타일 */
+.bottom-nav {
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-border);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.bottom-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--color-primary-light);
+    gap: 2px;
+    transition: color 0.2s;
+}
+
+.bottom-nav-item:hover {
+    color: var(--color-primary-active);
+}
+
+.bottom-nav-item.active {
+    color: var(--color-primary-active);
+}
+
+.bottom-nav-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.bottom-nav-item.active .bottom-nav-icon,
+.bottom-nav-item:hover .bottom-nav-icon {
+    opacity: 1;
+}
+
+.bottom-nav-label {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* 로그인 화면 스타일 */
+.login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 32px;
+    gap: 28px;
+}
+
+.login-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-logo-img {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+}
+
+.login-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    line-height: 36px;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    color: var(--color-primary);
+    line-height: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 320px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 16px;
+}
+
+.form-input {
+    background-color: var(--color-white);
+    border: 1.5px solid var(--color-border);
+    border-radius: 16px;
+    height: 51px;
+    width: 100%;
+    padding: 0 17.5px;
+    font-size: 14px;
+    color: var(--color-primary-dark);
+    transition: border-color 0.2s;
+}
+
+.form-input::placeholder {
+    color: rgba(44, 66, 37, 0.5);
+}
+
+.form-input:focus {
+    border-color: var(--color-primary-active);
+}
+
+.btn-submit {
+    background-color: var(--color-primary-active);
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 16px;
+    height: 51px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: var(--color-primary);
+}
+
+.signup-link-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.signup-link-text {
+    font-size: 12px;
+    color: var(--color-primary-light);
+    line-height: 16px;
+}
+
+.btn-signup-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary-active);
+    line-height: 24px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-signup-link:hover {
+    color: var(--color-primary);
+}
+
+/* 뒤로가기 버튼 (공통) */
+.btn-back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    cursor: pointer;
+    transition: color 0.2s;
+    margin-bottom: 24px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.btn-back:hover {
+    color: var(--color-primary-dark);
+}
+
+.btn-back img {
+    width: 18px;
+    height: 18px;
+}
+
+/* 회원가입 화면 스타일 */
+.register-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 40px 32px;
+}
+
+.register-heading {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    line-height: 32px;
+}
+
+.register-subtitle {
+    font-size: 14px;
+    color: var(--color-primary);
+    line-height: 20px;
+    margin-top: 4px;
+    margin-bottom: 28px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 320px;
+}
+
+.register-login-link-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+}
+
+/* 폼 에러 메시지 (공통) */
+.form-error-message {
+    display: none;
+    font-size: 12px;
+    color: var(--color-danger);
+    line-height: 18px;
+    padding: 0 4px;
+}
