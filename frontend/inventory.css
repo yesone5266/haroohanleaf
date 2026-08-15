@@ -1,0 +1,199 @@
+/* 인벤토리 전용 스타일 */
+.app-header-with-subtitle {
+    padding: 20px 20px 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.app-header-with-subtitle h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.app-header-with-subtitle p {
+    font-size: 12px;
+    color: var(--color-primary);
+}
+
+/* 현재 키우는 식물 카드 */
+.current-plant-card {
+    display: flex;
+    gap: 16px;
+    padding: 21px;
+}
+
+.current-plant-img-box {
+    width: 112px;
+    height: 128px;
+    background-color: var(--color-bg-card-inner);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.current-plant-img-box img {
+    width: 96px;
+    height: 112px;
+    object-fit: contain;
+}
+
+.current-plant-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.badge-current {
+    background-color: var(--color-bg-card-inner);
+    color: var(--color-primary);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    align-self: flex-start;
+    margin-bottom: 8px;
+}
+
+.current-plant-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.current-plant-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.current-plant-level {
+    font-size: 12px;
+    color: var(--color-primary-light);
+}
+
+.current-plant-desc {
+    font-size: 12px;
+    color: var(--color-primary-light);
+    margin-bottom: 12px;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+}
+
+.exp-header .exp-label {
+    font-weight: 700;
+}
+
+.exp-bar-container {
+    height: 10px;
+    background-color: var(--color-bg-card-inner);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.exp-bar-fill {
+    height: 100%;
+    background-color: var(--color-primary-active);
+    width: 65%; /* 65 / 100 */
+    border-radius: 10px;
+}
+
+.exp-footer {
+    font-size: 10px;
+    color: var(--color-primary-light);
+}
+
+/* 수집된 식물 섹션 */
+.collection-section {
+    padding: 0 16px 24px 16px;
+}
+
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.collection-header h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.collection-header .collection-count {
+    font-size: 12px;
+    color: var(--color-primary-light);
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.collection-item {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.collection-img-box {
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-bg-card-inner);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collection-img-box img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.collection-item-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+/* 잠긴(미수집) 식물 */
+.collection-item.locked {
+    background-color: var(--color-bg-card-inner);
+    border-color: transparent;
+    opacity: 0.6;
+}
+
+.collection-item.locked .collection-img-box {
+    background-color: #e8e8e4;
+}
+
+.collection-item.locked .collection-img-box img {
+    width: 18px;
+    height: 18px;
+}
+
+.collection-item.locked .collection-item-name {
+    color: #aaaa9e;
+}

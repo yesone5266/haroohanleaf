@@ -1,0 +1,52 @@
+/* 홈 화면 전용 스타일 */
+.home-section {
+    padding: 0 20px;
+    margin-bottom: 24px;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent; /* 필요시 경계선용 */
+}
+
+.todo-title-group {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.todo-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.todo-status {
+    font-size: 11px;
+    color: var(--color-primary-light);
+}
+
+.btn-add-todo {
+    background-color: var(--color-primary-active);
+    color: var(--color-white);
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px; /* 완전한 둥근 모서리 */
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: opacity 0.2s;
+}
+
+.btn-add-todo:hover {
+    opacity: 0.9;
+}
+
+.btn-add-todo img {
+    width: 11px;
+    height: 11px;
+}

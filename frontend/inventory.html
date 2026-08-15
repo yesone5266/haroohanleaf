@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인벤토리 - 하루한잎</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="inventory.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-content">
+            <header class="app-header-with-subtitle">
+                <h1>인벤토리</h1>
+                <p>나의 식물 컬렉션</p>
+            </header>
+            
+            <div class="card current-plant-card">
+                <div class="current-plant-img-box">
+                    <img src="http://localhost:3845/assets/37defedb6b8ddf7c1d2d2c4781f5d39a66042fb9.svg" alt="새싹">
+                </div>
+                <div class="current-plant-info">
+                    <span class="badge-current">현재 키우는 식물</span>
+                    <div class="current-plant-title-row">
+                        <span class="current-plant-name">새싹</span>
+                        <span class="current-plant-level">Lv.2</span>
+                    </div>
+                    <p class="current-plant-desc">열심히 성장하는 중이에요!</p>
+                    <div class="exp-header">
+                        <span class="exp-label">EXP</span>
+                        <span>65 / 100</span>
+                    </div>
+                    <div class="exp-bar-container">
+                        <div class="exp-bar-fill"></div>
+                    </div>
+                    <p class="exp-footer">다음 단계까지 35 EXP</p>
+                </div>
+            </div>
+
+            <section class="collection-section">
+                <div class="collection-header">
+                    <h2>수집된 식물</h2>
+                    <span class="collection-count">3 / 6</span>
+                </div>
+                <div class="collection-grid">
+                    <div class="collection-item">
+                        <div class="collection-img-box">
+                            <img src="http://localhost:3845/assets/51b23854ef2592aad565164f70ea1a8786c08378.svg" alt="민들레">
+                        </div>
+                        <span class="collection-item-name">민들레</span>
+                    </div>
+                    <div class="collection-item">
+                        <div class="collection-img-box">
+                            <img src="http://localhost:3845/assets/bf2d1cd916eac0fcba89a494e056ded4f3cadd59.svg" alt="소나무">
+                        </div>
+                        <span class="collection-item-name">소나무</span>
+                    </div>
+                    <div class="collection-item">
+                        <div class="collection-img-box">
+                            <img src="http://localhost:3845/assets/294ac0f7ad732ba19a77a5a04ae60ad1a4a767c6.svg" alt="선인장">
+                        </div>
+                        <span class="collection-item-name">선인장</span>
+                    </div>
+                    <div class="collection-item locked">
+                        <div class="collection-img-box">
+                            <img src="http://localhost:3845/assets/9ef1723da29134f99082d85cc116b0ff9c7afbe0.svg" alt="잠금 아이콘">
+                        </div>
+                        <span class="collection-item-name">해바라기</span>
+                    </div>
+                    <div class="collection-item locked">
+                        <div class="collection-img-box">
+                            <img src="http://localhost:3845/assets/9ef1723da29134f99082d85cc116b0ff9c7afbe0.svg" alt="잠금 아이콘">
+                        </div>
+                        <span class="collection-item-name">대나무</span>
+                    </div>
+                    <div class="collection-item locked">
+                        <div class="collection-img-box">
+                            <img src="http://localhost:3845/assets/9ef1723da29134f99082d85cc116b0ff9c7afbe0.svg" alt="잠금 아이콘">
+                        </div>
+                        <span class="collection-item-name">벚꽃</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <bottom-nav active="inventory"></bottom-nav>
+    </div>
+    <script src="navigation.js" defer></script>
+</body>
+</html>
