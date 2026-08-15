@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 - 하루한잎</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="register-content">
+
+            <!-- 뒤로가기 버튼 -->
+            <button class="btn-back" onclick="history.back()">
+                <img src="http://localhost:3845/assets/8eb85c04fbc16da99a6d78e8bd3e33087f378d55.svg" alt="뒤로가기">
+                <span>로그인으로</span>
+            </button>
+
+            <!-- 페이지 타이틀 -->
+            <h1 class="register-heading">회원가입</h1>
+            <p class="register-subtitle">정보를 입력해 계정을 만들어보세요</p>
+
+            <!-- 회원가입 입력 폼 -->
+            <form class="register-form" id="register-form" novalidate>
+                <div class="form-field">
+                    <label for="email" class="form-label">이메일</label>
+                    <input type="email" id="email" class="form-input" placeholder="example@email.com" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label for="nickname" class="form-label">닉네임</label>
+                    <input type="text" id="nickname" class="form-input" placeholder="2자 이상 입력" required>
+                </div>
+                <div class="form-field">
+                    <label for="password" class="form-label">비밀번호</label>
+                    <input type="password" id="password" class="form-input" placeholder="6자 이상 입력" required autocomplete="new-password">
+                </div>
+                <div class="form-field">
+                    <label for="password-confirm" class="form-label">비밀번호 재입력</label>
+                    <input type="password" id="password-confirm" class="form-input" placeholder="비밀번호 확인" required autocomplete="new-password">
+                </div>
+
+                <!-- 에러 메시지 영역 -->
+                <p class="form-error-message" id="error-message" role="alert" aria-live="polite"></p>
+
+                <button type="submit" class="btn-submit" id="submit-btn">가입하기</button>
+            </form>
+
+            <!-- 로그인 페이지 이동 안내 -->
+            <div class="register-login-link-container">
+                <span class="signup-link-text">이미 계정이 있으신가요?</span>
+                <a href="/login" class="btn-signup-link">로그인</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>
