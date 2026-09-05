@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지 - 하루한잎</title>
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="dialog.css">
 </head>
 <body>
     <div class="app-container">
@@ -17,15 +18,16 @@
             <!-- 프로필 카드 -->
             <section class="card">
                 <div class="profile-row">
-                    <div class="profile-avatar">
-                        <img src="http://localhost:3845/assets/5d60d52f139cff417abc1bbc546ec8f54ec813fd.png" alt="프로필 아바타">
+                    <div class="profile-avatar" style="cursor: pointer;" aria-label="프로필 사진 변경">
+                        <img src="/assets/profile.svg" alt="프로필 아바타">
                     </div>
+                    <input type="file" id="avatar-input" accept="image/*" style="display: none;">
                     <div class="profile-info">
-                        <h2 class="profile-name">초록나무</h2>
-                        <p class="profile-email">greenleaf@email.com</p>
+                        <h2 class="profile-name"></h2>
+                        <p class="profile-email"></p>
                     </div>
                     <button class="btn-edit" aria-label="프로필 수정">
-                        <img src="http://localhost:3845/assets/5d811760283642cb6370d09ee9f0dd84d6071f79.svg" alt="프로필 수정">
+                        <img src="/assets/edit.svg" alt="프로필 수정">
                     </button>
                 </div>
                 <p class="profile-bio">매일 조금씩 성장하는 중이에요 🌱</p>
@@ -36,16 +38,12 @@
                 <h2 class="record-title">나의 기록</h2>
                 <div class="stat-grid">
                     <div class="stat-card">
-                        <span class="stat-value">47</span>
+                        <span class="stat-value" id="stat-completed-todos">0</span>
                         <span class="stat-label">완료한 할일</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-value">3</span>
+                        <span class="stat-value" id="stat-collected-plants">0</span>
                         <span class="stat-label">수집한 식물</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-value">12일</span>
-                        <span class="stat-label">연속 학습일</span>
                     </div>
                 </div>
             </section>
@@ -53,11 +51,11 @@
             <!-- 액션 버튼 목록 -->
             <div class="action-list">
                 <button class="btn-action logout">
-                    <img src="http://localhost:3845/assets/b363bdc7492750f219a48f7f40e9e0537ce8a099.svg" alt="로그아웃">
+                    <img src="/assets/logout.svg" alt="로그아웃">
                     <span>로그아웃</span>
                 </button>
                 <button class="btn-action delete">
-                    <img src="http://localhost:3845/assets/acbd3bd55633a6c38be019462840baf04a0a1412.svg" alt="회원탈퇴">
+                    <img src="/assets/delete.svg" alt="회원탈퇴">
                     <span>회원탈퇴</span>
                 </button>
             </div>
@@ -67,7 +65,9 @@
         <bottom-nav active="mypage"></bottom-nav>
     </div>
 
-    <!-- 공통 네비게이션 스크립트 연결 -->
+    <!-- 공통 네비게이션 및 다이얼로그 스크립트 연결 -->
+    <script src="dialog.js" defer></script>
     <script src="navigation.js" defer></script>
+    <script src="mypage.js" defer></script>
 </body>
 </html>
