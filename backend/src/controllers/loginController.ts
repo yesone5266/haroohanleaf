@@ -11,6 +11,33 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
   try {
     const data = await loginUser({ email, password });
+    
+    if (!data.session) {
+      res.status(401).json({ error: '로그인 세션을 생성할 수 없습니다.' });
+      return;
+    }
+
+    // 쿠키 옵션 설정
+    const isProd = process.env.NODE_ENV === 'production';
+    
+    // Access Token 쿠키 (유효기간: Supabase 세션 만료 시간, 기본 3600초)
+    res.cookie('access_token', data.session.access_token, {
+      httpOnly: true,
+      secure: isProd,
+      sameSite: 'lax',
+      maxAge: data.session.expires_in * 1000,
+    });
+
+    // Refresh Token 쿠키 (유효기간: 30일)
+    if (data.session.refresh_token) {
+      res.cookie('refresh_token', data.session.refresh_token, {
+        httpOnly: true,
+        secure: isProd,
+        sameSite: 'lax',
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+      });
+    }
+
     res.status(200).json({ message: '로그인에 성공했습니다.', user: data.user });
   } catch (error: unknown) {
     if (error instanceof Error) {

@@ -1,4 +1,5 @@
 import { supabase, supabaseAdmin } from '../config/supabase';
+import { createNewSeed } from './plantService';
 
 interface RegisterPayload {
   email: string;
@@ -26,6 +27,9 @@ export const registerUser = async ({ email, nickname, password }: RegisterPayloa
     if (profileError) {
       throw profileError;
     }
+
+    // ⭐ 유저 프로필이 정상적으로 만들어진 직후에 최초 씨앗 1개 발급
+    await createNewSeed(data.user.id);
   }
 
   return data;

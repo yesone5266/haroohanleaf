@@ -56,3 +56,25 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ error: '회원가입 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' });
   }
 };
+
+/**
+ * POST /api/auth/logout
+ * 인증 쿠키들을 제거하여 로그아웃 처리
+ */
+export const logout = async (req: Request, res: Response): Promise<void> => {
+  res.clearCookie('access_token');
+  res.clearCookie('refresh_token');
+  res.status(200).json({ message: '로그아웃 되었습니다.' });
+};
+
+/**
+ * GET /api/auth/me
+ * 현재 로그인한 사용자 정보 반환 (requireAuth 미들웨어를 거쳐 req.user에 적재됨)
+ */
+export const getMe = async (req: any, res: Response): Promise<void> => {
+  if (!req.user) {
+    res.status(401).json({ error: '인증되지 않은 사용자입니다.' });
+    return;
+  }
+  res.status(200).json({ user: req.user });
+};
