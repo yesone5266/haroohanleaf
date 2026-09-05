@@ -1,0 +1,163 @@
+/* Custom Dialog System */
+
+/* Top Toast Container for Alert & Confirm */
+#custom-toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    max-width: 400px;
+    pointer-events: none; /* Let clicks pass through container */
+}
+
+/* Toast Box */
+.custom-toast {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 16px;
+    pointer-events: auto; /* Re-enable clicks on toast */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.custom-toast-msg {
+    font-size: 15px;
+    color: var(--color-text-main);
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+.custom-toast-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.custom-toast-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.custom-toast-btn.cancel {
+    background-color: var(--color-bg-card-inner);
+    color: var(--color-text-sub);
+}
+
+.custom-toast-btn.cancel:hover {
+    background-color: #e5e5e5;
+}
+
+.custom-toast-btn.confirm {
+    background-color: var(--color-primary-active);
+    color: white;
+}
+
+.custom-toast-btn.confirm:hover {
+    background-color: var(--color-primary-active);
+}
+
+/* Modal Overlay for Prompt */
+#custom-prompt-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+#custom-prompt-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Prompt Modal */
+.custom-prompt-modal {
+    background-color: #ffffff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 320px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform: scale(0.95);
+    transition: transform 0.2s;
+}
+
+#custom-prompt-overlay.active .custom-prompt-modal {
+    transform: scale(1);
+}
+
+.custom-prompt-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.custom-prompt-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.custom-prompt-input:focus {
+    border-color: var(--color-primary-main);
+}
+
+.custom-prompt-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.custom-prompt-actions button {
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+}
+
+.custom-prompt-btn-cancel {
+    background-color: var(--color-bg-card-inner);
+    color: var(--color-text-sub);
+}
+
+.custom-prompt-btn-submit {
+    background-color: var(--color-primary-active);
+    color: white;
+}
+
+.custom-prompt-btn-submit:hover {
+    background-color: var(--color-primary-active);
+}

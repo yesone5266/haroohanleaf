@@ -1,15 +1,124 @@
 /* 홈 화면 전용 스타일 */
 .home-section {
-    padding: 0 20px;
+    padding: 0 16px;
     margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
+/* 달력 카드 */
+.calendar-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 0 4px;
+}
+
+.calendar-nav-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.calendar-nav-btn:hover {
+    background-color: var(--color-bg-card-inner);
+}
+
+.calendar-nav-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.calendar-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.weekday {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-primary-light);
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weekday.sun { color: var(--color-danger); }
+.weekday.sat { color: #7a94c4; }
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 4px;
+}
+
+.calendar-day-btn {
+    height: 32px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-primary-dark);
+    transition: background-color 0.2s;
+}
+
+.calendar-day-btn.sun { color: var(--color-danger); }
+.calendar-day-btn.sat { color: #7a94c4; }
+.calendar-day-btn.muted { opacity: 0.2; }
+
+.calendar-day-btn.selected {
+    background-color: var(--color-primary-active);
+    color: var(--color-white);
+    font-weight: 700;
+}
+
+/* 할 일(점) 표시 */
+.todo-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-primary-active);
+    position: absolute;
+    bottom: 2px;
+}
+
+.calendar-day-btn.selected .todo-dot {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* 할 일 섹션 */
 .todo-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 8px;
-    border-bottom: 1px solid transparent; /* 필요시 경계선용 */
+    padding-left: 4px;
 }
 
 .todo-title-group {
@@ -34,7 +143,7 @@
     color: var(--color-white);
     font-size: 12px;
     font-weight: 700;
-    border-radius: 20px; /* 완전한 둥근 모서리 */
+    border-radius: 20px;
     padding: 6px 12px;
     display: flex;
     align-items: center;
@@ -46,7 +155,100 @@
     opacity: 0.9;
 }
 
-.btn-add-todo img {
-    width: 11px;
-    height: 11px;
+.todo-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.todo-item {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 13px 17px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.2s;
+    cursor: pointer;
+}
+
+.todo-item:hover {
+    border-color: var(--color-primary-light);
+}
+
+.todo-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.todo-check svg {
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+}
+
+.todo-text {
+    font-size: 14px;
+    color: var(--color-primary-dark);
+    line-height: 20px;
+    transition: all 0.2s;
+}
+
+/* 완료된 상태 */
+.todo-item.completed .todo-check {
+    background-color: var(--color-primary-active);
+    border-color: var(--color-primary-active);
+}
+
+.todo-item.completed .todo-check svg {
+    opacity: 1;
+}
+
+.todo-item.completed .todo-text {
+    color: var(--color-primary-light);
+    text-decoration: line-through;
+}
+
+/* 오늘 날짜 (선택되지 않았을 때 연한 색) */
+.calendar-day-btn.today:not(.selected) {
+    background-color: #e8eedf;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* 할 일 수정/삭제 액션 컨테이너 */
+.todo-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+    opacity: 0; /* 마우스 올리기 전엔 숨김 */
+    transition: opacity 0.2s;
+}
+
+.todo-item:hover .todo-actions {
+    opacity: 1;
+}
+
+.todo-action-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: var(--color-primary-light);
+    transition: all 0.2s;
+}
+
+.todo-action-btn:hover {
+    background-color: var(--color-bg-main);
+    color: var(--color-primary-dark);
 }
