@@ -49,6 +49,42 @@ export const requireAuth = async (req: AuthenticatedRequest, res: Response, next
   next();
 };
 
+export const optionalAuth = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  const accessToken = req.cookies?.access_token;
+  const refreshToken = req.cookies?.refresh_token;
+
+  if (!accessToken) {
+    if (refreshToken) {
+      const refreshed = await attemptTokenRefresh(refreshToken, res);
+      if (refreshed) {
+        req.user = refreshed.user;
+      }
+    }
+    return next();
+  }
+
+  const { data: { user }, error } = await supabase.auth.getUser(accessToken);
+
+  if (error || !user) {
+    if (refreshToken) {
+      const refreshed = await attemptTokenRefresh(refreshToken, res);
+      if (refreshed) {
+        req.user = refreshed.user;
+      } else {
+        res.clearCookie('access_token');
+        res.clearCookie('refresh_token');
+      }
+    } else {
+      res.clearCookie('access_token');
+      res.clearCookie('refresh_token');
+    }
+    return next();
+  }
+
+  req.user = user;
+  next();
+};
+
 /**
  * 이미 로그인된 사용자가 로그인/회원가입 페이지 접근 시 홈으로 리다이렉트하는 미들웨어
  */

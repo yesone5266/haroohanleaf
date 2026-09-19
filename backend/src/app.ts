@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 dotenv.config();
 
 import authRoutes from './routes/authRoutes';
-import { requireAuth, redirectIfAuth } from './middleware/authMiddleware';
+import { requireAuth, redirectIfAuth, optionalAuth, AuthenticatedRequest } from './middleware/authMiddleware';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -39,8 +39,12 @@ app.use((req, res, next) => {
 });
 
 // 정적 페이지 라우트 (인증 상태별 미들웨어 적용)
-app.get('/', requireAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/index.html'));
+app.get('/', optionalAuth, (req: AuthenticatedRequest, res) => {
+  if (req.user) {
+    res.sendFile(path.join(__dirname, '../../frontend/index.html'));
+  } else {
+    res.sendFile(path.join(__dirname, '../../frontend/landing.html'));
+  }
 });
 
 app.get('/login', redirectIfAuth, (req, res) => {
